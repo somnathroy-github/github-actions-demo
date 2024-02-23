@@ -1,8 +1,15 @@
 name: hello-world
 on: push
 jobs:
-  my-job:
+  build-node:
     runs-on: ubuntu-latest
+    container: node:16
     steps:
       - name: my-step
         run: echo "Hello World!"
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: node app.js
+      
